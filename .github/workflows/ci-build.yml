@@ -12,10 +12,14 @@ jobs:
     steps:
     - name: test ls
       run: ls -l
+    - name: Python version
+      run: python --version
+    - name: Python 3 version
+      run: python3 --version
+    - name: Python 2 version
+      run: python2 --version
     - name: Checkout repo
       uses: actions/checkout@v2
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v3
-      timeout-minutes: 350
-      with:
-        limit-access-to-actor: true
+      if: ${{ always() }}
